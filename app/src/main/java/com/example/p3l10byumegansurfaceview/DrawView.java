@@ -10,12 +10,14 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 
+
 public class DrawView extends SurfaceView implements Runnable{
     private boolean mRunning;
     private Thread mGameThread = null;
     private SurfaceHolder mSurfaceHolder;
     private Context mContext;
     int x = 0;
+//    float t = 0;
     Paint mPaint = new Paint();
     public DrawView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -74,6 +76,12 @@ public class DrawView extends SurfaceView implements Runnable{
         canvas.drawRect((200+x++), 200, getWidth() / 2, getHeight() / 2+200, mPaint);
         mPaint.setColor(getResources().getColor(R.color.purple_light));
         canvas.drawRect((250+x++), 250, getWidth() / 2, getHeight() / 2+250, mPaint);
+
+        mPaint.setColor(Color.WHITE);
+//        t++;
+//        float ex = (float) Math.cos(t);
+//        float why = (float) Math.sin(t);
+        canvas.drawCircle((float)x, (float) Math.sin(x) * 100 + getHeight()/2, 20, mPaint);
     }
     /**
      * Called by MainActivity.onPause() to stop the thread.
